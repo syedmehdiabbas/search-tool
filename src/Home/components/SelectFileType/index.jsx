@@ -6,9 +6,12 @@ const customStyles = {
   control: (provided, state) => ({
     ...provided,
     width: 200,
+    border: "none",
     borderRadius: "999px",
+    color: "#718096",
     background: "#edf2f7",
     fontSize: "14px",
+    paddingLeft: "8px",
   }),
   menu: (provided, state) => ({
     ...provided,
