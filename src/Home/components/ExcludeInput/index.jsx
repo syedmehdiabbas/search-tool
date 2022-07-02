@@ -19,7 +19,7 @@ function ExcludeInput({ excludeTerms, setExcludeTerms }) {
         onChange={(e) => {
           setExcludeTerms(e.target.value);
         }}
-        size="sm"
+        size="md"
       />
     </Tooltip>
   );
