@@ -10,6 +10,10 @@ const customStyles = {
     background: "#edf2f7",
     fontSize: "14px",
   }),
+  menu: (provided, state) => ({
+    ...provided,
+    borderRadius: "6px",
+  }),
 };
 
 const customTheme = (theme) => ({
