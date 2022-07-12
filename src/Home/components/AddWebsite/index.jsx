@@ -56,6 +56,7 @@ function AddWebsite() {
               <Input
                 placeholder="Name"
                 value={name}
+                focusBorderColor="purple.300"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -65,6 +66,7 @@ function AddWebsite() {
                 <Input
                   placeholder="example.com"
                   value={link}
+                  focusBorderColor="purple.300"
                   onChange={(e) => {
                     setLink(e.target.value);
                   }}
