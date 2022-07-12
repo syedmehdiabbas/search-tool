@@ -38,7 +38,12 @@ function AddWebsite() {
 
   return (
     <>
-      <Button fontWeight="bold" fontSize="xl" onClick={onOpen} variant="ghost">
+      <Button
+        fontWeight="extrabold"
+        fontSize="xl"
+        onClick={onOpen}
+        variant="ghost"
+      >
         +
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
