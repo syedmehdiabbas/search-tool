@@ -104,7 +104,13 @@ function Home() {
 
   return (
     <form onSubmit={handleSearch}>
-      <VStack alignItems="center" spacing={[8, 12, 16]} pt={[8, 12, 20]}>
+      <VStack
+        alignItems="center"
+        spacing={[8, 12, 16]}
+        pt={[8, 12, 20]}
+        maxW="4xl"
+        mx="auto"
+      >
         <Header />
 
         <VStack spacing={6}>
