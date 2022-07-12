@@ -110,6 +110,7 @@ function Home() {
         pt={[8, 12, 20]}
         maxW="4xl"
         mx="auto"
+        px={2}
       >
         <Header />
 
