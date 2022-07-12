@@ -10,6 +10,7 @@ function SearchButton({ isDisabled }) {
       type="submit"
       rounded="full"
       mt={4}
+      isDisabled={isDisabled}
     >
       Search
     </Button>
