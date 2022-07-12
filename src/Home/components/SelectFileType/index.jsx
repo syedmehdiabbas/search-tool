@@ -17,6 +17,12 @@ const customStyles = {
     ...provided,
     borderRadius: "6px",
   }),
+  placeholder: (defaultStyles) => {
+    return {
+      ...defaultStyles,
+      color: "#A0AEC0",
+    };
+  },
 };
 
 const customTheme = (theme) => ({
