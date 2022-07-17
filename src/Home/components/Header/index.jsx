@@ -5,10 +5,10 @@ function Header() {
   return (
     <Box textAlign="center">
       <Heading color="purple.900" textShadow="base">
-        Let's Search Better 🕵🏽‍♂️
+        Search Better 🦸🏽‍♂️
       </Heading>
       <Text fontSize="large" mt={2} color="purple.900">
-        Making it easy to get better google search results!
+        Add superpowers to you google search!
       </Text>
     </Box>
   );
