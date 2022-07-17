@@ -51,13 +51,8 @@ function AddWebsite() {
       ></IconButton>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent
-          mt="300px"
-          borderTopRadius="none"
-          borderTop="8px"
-          borderColor="purple.400"
-        >
-          <ModalHeader>Add Website</ModalHeader>
+        <ModalContent mt="300px" borderLeft="8px" borderColor="purple.400">
+          <ModalHeader color="purple.900">Add Website</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <VStack spacing={4}>
