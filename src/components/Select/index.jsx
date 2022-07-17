@@ -1,11 +1,10 @@
 import React from "react";
 import ReactSelect from "react-select";
-import fileTypes from "./../../../data/fileTypes";
 
 const customStyles = {
   control: (provided, state) => ({
     ...provided,
-    width: 200,
+    width: 160,
     border: "none",
     borderRadius: "999px",
     color: "#718096",
@@ -35,13 +34,13 @@ const customTheme = (theme) => ({
   },
 });
 
-function SelectFileType({ value, handleSelect }) {
-  const options = fileTypes.map((f) => ({ value: f, label: f }));
+function SelectFileType({ value, handleSelect, data, placeholder }) {
+  const options = data.map((f) => ({ value: f, label: f }));
 
   return (
     <ReactSelect
       options={options}
-      placeholder="File Type"
+      placeholder={placeholder}
       value={value}
       onChange={handleSelect}
       styles={customStyles}
