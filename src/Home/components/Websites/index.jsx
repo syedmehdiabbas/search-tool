@@ -11,6 +11,24 @@ import AddWebsite from "./AddWebsite";
 import useStore from "../../../store";
 import DeleteWebsite from "./DeleteWebsite";
 
+const WebsitesList = ({ websites, handleWebsiteClick, websitesData }) => (
+  <>
+    {websites.map((website) => (
+      <Button
+        maxW="18ch"
+        noOfLines={1}
+        onClick={handleWebsiteClick}
+        key={website}
+        isActive={websitesData[website].selected}
+        name={website}
+        rounded="full"
+      >
+        {websitesData[website].name}
+      </Button>
+    ))}
+  </>
+);
+
 function Websites({ handleWebsiteClick }) {
   const websitesData = useStore((state) => state.websites);
   const allWebsites = Object.keys(websitesData);
@@ -21,20 +39,16 @@ function Websites({ handleWebsiteClick }) {
       </Text>
       <ButtonGroup size="md" colorScheme="purple" variant="outline">
         <Flex flexWrap="wrap" gap={3} justify="center">
-          {allWebsites.map((website) => (
-            <Button
-              maxW="18ch"
-              noOfLines={1}
-              onClick={handleWebsiteClick}
-              key={website}
-              isActive={websitesData[website].selected}
-              name={website}
-              rounded="full"
-            >
-              {websitesData[website].name}
-            </Button>
-          ))}
           <HStack>
+            {allWebsites.length !== 0 ? (
+              <WebsitesList
+                websites={allWebsites}
+                handleWebsiteClick={handleWebsiteClick}
+                websitesData={websitesData}
+              />
+            ) : (
+              <Text color="purple.900">Add a website</Text>
+            )}
             <AddWebsite />
             <DeleteWebsite />
           </HStack>

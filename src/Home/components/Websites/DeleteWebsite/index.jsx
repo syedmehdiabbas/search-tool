@@ -18,6 +18,31 @@ import useStore from "../../../../store";
 
 const TrashIcon = () => <Icon src={trash} alt="Delete" />;
 
+const WebsitesList = ({ websites, deleteWebsite }) => (
+  <>
+    {websites.map((website, index) => (
+      <HStack
+        key={website}
+        p={2}
+        justify="space-between"
+        borderBottom="2px"
+        borderTop={index === 0 ? "2px" : "none"}
+        borderColor="gray.100"
+      >
+        <Text noOfLines={1} color="purple.900" fontWeight="medium">
+          {website}
+        </Text>
+        <IconButton
+          icon={<TrashIcon />}
+          onClick={() => deleteWebsite(website)}
+          rounded="full"
+          variant="ghost"
+        />
+      </HStack>
+    ))}
+  </>
+);
+
 const DeleteWebsite = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -39,26 +64,16 @@ const DeleteWebsite = () => {
           <ModalHeader color="purple.900">Delete a Website</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {allWebsites.map((website, index) => (
-              <HStack
-                key={website}
-                p={2}
-                justify="space-between"
-                borderBottom="2px"
-                borderTop={index === 0 ? "2px" : "none"}
-                borderColor="gray.100"
-              >
-                <Text noOfLines={1} color="purple.900" fontWeight="medium">
-                  {website}
-                </Text>
-                <IconButton
-                  icon={<TrashIcon />}
-                  onClick={() => deleteWebsite(website)}
-                  rounded="full"
-                  variant="ghost"
-                />
-              </HStack>
-            ))}
+            {allWebsites.length !== 0 ? (
+              <WebsitesList
+                websites={allWebsites}
+                deleteWebsite={deleteWebsite}
+              />
+            ) : (
+              <Text textAlign="center" color="purple.900">
+                Go add some websites first!
+              </Text>
+            )}
           </ModalBody>
           <ModalFooter justifyContent="center"></ModalFooter>
         </ModalContent>
