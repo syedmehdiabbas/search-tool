@@ -6,7 +6,7 @@ const data = {
     selected: false,
   },
   mdn: {
-    name: "mdn",
+    name: "MDN",
     address: "https://developer.mozilla.org",
     selected: false,
   },
