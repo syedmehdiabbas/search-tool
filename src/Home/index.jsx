@@ -17,7 +17,6 @@ import years from "./../data/years";
 function Home() {
   const websitesData = useStore((state) => state.websites);
   const changeSelection = useStore((state) => state.changeSelection);
-  const deleteWebsite = useStore((state) => state.deleteWebsite);
 
   const [input, setInput] = useState("");
   const [exactSearch, setExactSearch] = useState(false);
@@ -38,11 +37,6 @@ function Home() {
 
   const handleWebsiteClick = (e) => {
     changeSelection(e.target.name);
-  };
-
-  const handleWebsiteRightClick = (e) => {
-    deleteWebsite(e.target.name);
-    e.preventDefault();
   };
 
   const handleFileSelect = (option) => {
@@ -118,7 +112,7 @@ function Home() {
         alignItems="center"
         spacing={[8, 12, 16]}
         pt={[8, 12, 20]}
-        maxW="4xl"
+        maxW="2xl"
         mx="auto"
         px={2}
       >
@@ -151,10 +145,7 @@ function Home() {
         </VStack>
 
         <VStack spacing={6} align="center">
-          <Websites
-            handleWebsiteClick={handleWebsiteClick}
-            handleWebsiteRightClick={handleWebsiteRightClick}
-          />
+          <Websites handleWebsiteClick={handleWebsiteClick} />
           <Box minH="34px">
             {isRedditSelected ? (
               <SubredditInput

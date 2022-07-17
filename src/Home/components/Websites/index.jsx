@@ -1,9 +1,17 @@
 import React from "react";
-import { Button, ButtonGroup, Flex, Text, VStack } from "@chakra-ui/react";
-import AddWebsite from "../AddWebsite";
+import {
+  Button,
+  ButtonGroup,
+  Flex,
+  HStack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import AddWebsite from "./AddWebsite";
 import useStore from "../../../store";
+import DeleteWebsite from "./DeleteWebsite";
 
-function Websites({ handleWebsiteClick, handleWebsiteRightClick }) {
+function Websites({ handleWebsiteClick }) {
   const websitesData = useStore((state) => state.websites);
   const allWebsites = Object.keys(websitesData);
   return (
@@ -15,8 +23,9 @@ function Websites({ handleWebsiteClick, handleWebsiteRightClick }) {
         <Flex flexWrap="wrap" gap={3} justify="center">
           {allWebsites.map((website) => (
             <Button
+              maxW="18ch"
+              noOfLines={1}
               onClick={handleWebsiteClick}
-              onContextMenu={handleWebsiteRightClick}
               key={website}
               isActive={websitesData[website].selected}
               name={website}
@@ -25,7 +34,10 @@ function Websites({ handleWebsiteClick, handleWebsiteRightClick }) {
               {websitesData[website].name}
             </Button>
           ))}
-          <AddWebsite />
+          <HStack>
+            <AddWebsite />
+            <DeleteWebsite />
+          </HStack>
         </Flex>
       </ButtonGroup>
     </VStack>
