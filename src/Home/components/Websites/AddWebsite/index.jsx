@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   Button,
+  IconButton,
   Input,
   InputGroup,
   InputLeftAddon,
@@ -14,7 +15,9 @@ import {
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
-import useStore from "../../../store";
+import useStore from "./../../../../store";
+import Icon from "./../../../../components/Icon";
+import plus from "./../../../../assets/plus.svg";
 
 function AddWebsite() {
   const [name, setName] = useState("");
@@ -36,16 +39,16 @@ function AddWebsite() {
     resetData();
   };
 
+  const PlusIcon = () => <Icon src={plus} alt="Add" />;
+
   return (
     <>
-      <Button
-        fontWeight="extrabold"
-        fontSize="xl"
+      <IconButton
         onClick={onOpen}
+        icon={<PlusIcon />}
+        rounded="full"
         variant="ghost"
-      >
-        +
-      </Button>
+      ></IconButton>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
@@ -65,9 +68,10 @@ function AddWebsite() {
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
+                rounded="full"
               />
               <InputGroup>
-                <InputLeftAddon children="https://" />
+                <InputLeftAddon children="https://" rounded="full" />
                 <Input
                   placeholder="example.com"
                   value={link}
@@ -75,6 +79,7 @@ function AddWebsite() {
                   onChange={(e) => {
                     setLink(e.target.value);
                   }}
+                  rounded="full"
                 />
               </InputGroup>
             </VStack>
@@ -85,10 +90,11 @@ function AddWebsite() {
               variant="solid"
               mr={4}
               isDisabled={!name || !link}
+              rounded="full"
             >
               Add
             </Button>
-            <Button variant="ghost" onClick={onClose}>
+            <Button variant="ghost" onClick={onClose} rounded="full">
               Close
             </Button>
           </ModalFooter>
