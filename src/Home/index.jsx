@@ -10,7 +10,9 @@ import ExcludeInput from "./components/ExcludeInput";
 import Websites from "./components/Websites";
 import SearchButton from "./components/SearchButton";
 import SearchInput from "./components/SearchInput";
-import SelectFileType from "./components/SelectFileType";
+import Select from "./../components/Select";
+import fileTypes from "./../data/fileTypes";
+import years from "./../data/years";
 
 function Home() {
   const websitesData = useStore((state) => state.websites);
@@ -22,6 +24,7 @@ function Home() {
   const [excludeTerms, setExcludeTerms] = useState("");
   const [subName, setSubName] = useState("");
   const [selectedFileType, setSelectedFileType] = useState(null);
+  const [selectedYear, setSelectedYear] = useState(0);
 
   const allWebsites = Object.keys(websitesData);
 
@@ -44,6 +47,9 @@ function Home() {
 
   const handleFileSelect = (option) => {
     setSelectedFileType(option);
+  };
+  const handleYearSelect = (option) => {
+    setSelectedYear(option);
   };
 
   const getInitialQuery = () => {
@@ -73,7 +79,11 @@ function Home() {
   };
 
   const getFileType = () => {
-    if (selectedFileType) return `filetype:${selectedFileType.value}`;
+    if (selectedFileType) return `filetype:${selectedFileType.value} `;
+    return "";
+  };
+  const getYear = () => {
+    if (selectedYear) return `after:${selectedYear.value}`;
     return "";
   };
 
@@ -94,7 +104,7 @@ function Home() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const query = `${getInitialQuery()} ${getAddedSites()}${getExcludedSites()} ${getFileType()}`;
+    const query = `${getInitialQuery()} ${getAddedSites()}${getExcludedSites()} ${getFileType()}${getYear()}`;
     window.open(query);
     resetSearch();
   };
@@ -123,10 +133,21 @@ function Home() {
               setExcludeTerms={setExcludeTerms}
             />
           </HStack>
-          <SelectFileType
-            value={selectedFileType}
-            handleSelect={handleFileSelect}
-          />
+          <HStack justify="space-between" gap={3}>
+            <Select
+              value={selectedFileType}
+              handleSelect={handleFileSelect}
+              data={fileTypes}
+              placeholder="File Type"
+            />
+
+            <Select
+              value={selectedYear}
+              handleSelect={handleYearSelect}
+              data={years}
+              placeholder="After:"
+            />
+          </HStack>
         </VStack>
 
         <VStack spacing={6} align="center">
