@@ -73,13 +73,14 @@ function AddWebsite() {
                 }}
                 rounded="full"
                 _hover={{ borderColor: "gray.500" }}
-                _placeholder={{ color: "gray.700" }}
+                _placeholder={{ color: "gray.500" }}
               />
               <InputGroup borderColor="gray.500">
                 <InputLeftAddon
                   border="1px"
                   children="https://"
                   rounded="full"
+                  color="purple.900"
                   _selection={{ background: "purple.100" }}
                 />
                 <Input
@@ -92,7 +93,7 @@ function AddWebsite() {
                   }}
                   rounded="full"
                   _hover={{ borderColor: "gray.500" }}
-                  _placeholder={{ color: "gray.700" }}
+                  _placeholder={{ color: "gray.500" }}
                 />
               </InputGroup>
             </VStack>
