@@ -8,6 +8,7 @@ function ExactCheck({ handleChange, val }) {
       colorScheme="purple"
       value={val}
       color="gray.600"
+      borderColor="gray.300"
     >
       <Tooltip
         hasArrow
