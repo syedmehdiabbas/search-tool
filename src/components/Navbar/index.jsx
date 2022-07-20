@@ -4,7 +4,16 @@ import Icon from "../Icon";
 import duckduckgo from "./../../assets/duckduckgo.svg";
 import google from "./../../assets/google.svg";
 
-const Navbar = () => {
+const Navbar = ({ searchEngine, setSearchEngine }) => {
+  const handleSearchEngineChange = () => {
+    if (searchEngine === "google") {
+      setSearchEngine("duckduckgo");
+      return;
+    }
+    setSearchEngine("google");
+    return;
+  };
+
   return (
     <HStack
       w="full"
@@ -15,7 +24,11 @@ const Navbar = () => {
       h={[14, 14, 16]}
     >
       <Icon src={google} />
-      <Switch colorScheme="purple" />
+      <Switch
+        onChange={handleSearchEngineChange}
+        isChecked={searchEngine === "duckduckgo"}
+        colorScheme="purple"
+      />
       <Icon src={duckduckgo} />
     </HStack>
   );

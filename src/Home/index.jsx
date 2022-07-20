@@ -14,7 +14,7 @@ import Select from "./../components/Select";
 import fileTypes from "./../data/fileTypes";
 import years from "./../data/years";
 
-function Home() {
+function Home({ searchEngine }) {
   const websitesData = useStore((state) => state.websites);
   const changeSelection = useStore((state) => state.changeSelection);
 
@@ -47,8 +47,10 @@ function Home() {
   };
 
   const getInitialQuery = () => {
-    if (exactSearch) return `https://google.com/search?q="${input}"`;
-    return `https://google.com/search?q=${input}`;
+    const searchParam = searchEngine === "google" ? "search?" : "?";
+    if (exactSearch)
+      return `https://${searchEngine}.com/${searchParam}q="${input}"`;
+    return `https://${searchEngine}.com/${searchParam}q=${input}`;
   };
 
   const getAddedSites = () => {
