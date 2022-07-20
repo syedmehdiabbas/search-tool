@@ -3,13 +3,13 @@ import ReactSelect from "react-select";
 
 const customStyles = {
   control: (provided, state) => ({
-    ...provided,
+    display: "flex",
     width: 160,
-    border: "none",
+    border: "1px solid #718096",
+    background: "transparent",
     borderRadius: "999px",
     color: "#718096",
-    background: "#edf2f7",
-    fontSize: "14px",
+    fontSize: "1rem",
     paddingLeft: "8px",
   }),
   menu: (provided, state) => ({
@@ -19,7 +19,7 @@ const customStyles = {
   placeholder: (defaultStyles) => {
     return {
       ...defaultStyles,
-      color: "#A0AEC0",
+      color: "#8A919B",
     };
   },
 };
