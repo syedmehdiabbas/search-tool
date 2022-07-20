@@ -3,12 +3,12 @@ import { InputGroup, InputLeftAddon, Input } from "@chakra-ui/react";
 
 function SubredditInput({ value, setName, autoFocus }) {
   return (
-    <InputGroup size="sm">
+    <InputGroup size="sm" borderColor="gray.500">
       <InputLeftAddon color="gray.600" children="r/" roundedLeft="full" />
       <Input
         placeholder="subreddit"
-        variant="filled"
-        border="2px"
+        variant="outline"
+        border="1px"
         focusBorderColor="purple.300"
         roundedRight="full"
         w="200px"
@@ -17,6 +17,8 @@ function SubredditInput({ value, setName, autoFocus }) {
         onChange={(e) => {
           setName(e.target.value);
         }}
+        _hover={{ borderColor: "gray.500" }}
+        _placeholder={{ color: "gray.500" }}
       />
     </InputGroup>
   );
