@@ -12,7 +12,7 @@ const Navbar = () => {
       alignItems="center"
       gap={1}
       px={[2, 4, 6]}
-      h={[12, 12, 16]}
+      h={[14, 14, 16]}
     >
       <Icon src={google} />
       <Switch colorScheme="purple" />

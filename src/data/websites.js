@@ -10,6 +10,11 @@ const data = {
     address: "https://developer.mozilla.org",
     selected: false,
   },
+  HackerNews: {
+    name: "HackerNews",
+    address: "https://news.ycombinator.com",
+    selected: false,
+  },
 };
 
 export default data;
