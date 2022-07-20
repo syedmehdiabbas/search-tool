@@ -9,7 +9,6 @@ function SearchButton({ isDisabled }) {
       px={16}
       type="submit"
       rounded="full"
-      mt={4}
       isDisabled={isDisabled}
     >
       Search
