@@ -4,6 +4,7 @@ import { Input } from "@chakra-ui/react";
 function SearchInput({ input, handleInput }) {
   return (
     <Input
+      type="search"
       placeholder="Search"
       size="lg"
       variant="outline"
