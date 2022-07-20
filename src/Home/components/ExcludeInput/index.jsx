@@ -10,9 +10,10 @@ function ExcludeInput({ excludeTerms, setExcludeTerms }) {
       offset={[0, 15]}
     >
       <Input
-        placeholder="Exclude"
-        variant="filled"
-        border="2px"
+        placeholder="Words to exclude"
+        variant="outline"
+        border="1px"
+        borderColor="gray.500"
         focusBorderColor="purple.300"
         rounded="full"
         value={excludeTerms}
@@ -20,6 +21,8 @@ function ExcludeInput({ excludeTerms, setExcludeTerms }) {
           setExcludeTerms(e.target.value);
         }}
         size="md"
+        _hover={{ borderColor: "gray.500" }}
+        _placeholder={{ color: "gray.500" }}
       />
     </Tooltip>
   );

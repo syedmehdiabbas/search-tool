@@ -52,11 +52,19 @@ function AddWebsite() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent mt="300px" borderLeft="8px" borderColor="purple.400">
-          <ModalHeader color="purple.900">Add Website</ModalHeader>
+          <ModalHeader
+            color="purple.900"
+            _selection={{ background: "purple.100" }}
+          >
+            Add Website
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <VStack spacing={4}>
               <Input
+                autoFocus
+                border="1px"
+                borderColor="gray.500"
                 placeholder="Name"
                 value={name}
                 focusBorderColor="purple.300"
@@ -64,10 +72,18 @@ function AddWebsite() {
                   setName(e.target.value);
                 }}
                 rounded="full"
+                _hover={{ borderColor: "gray.500" }}
+                _placeholder={{ color: "gray.700" }}
               />
-              <InputGroup>
-                <InputLeftAddon children="https://" rounded="full" />
+              <InputGroup borderColor="gray.500">
+                <InputLeftAddon
+                  border="1px"
+                  children="https://"
+                  rounded="full"
+                  _selection={{ background: "purple.100" }}
+                />
                 <Input
+                  border="1px"
                   placeholder="example.com"
                   value={link}
                   focusBorderColor="purple.300"
@@ -75,6 +91,8 @@ function AddWebsite() {
                     setLink(e.target.value);
                   }}
                   rounded="full"
+                  _hover={{ borderColor: "gray.500" }}
+                  _placeholder={{ color: "gray.700" }}
                 />
               </InputGroup>
             </VStack>
