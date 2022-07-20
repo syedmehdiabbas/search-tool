@@ -111,7 +111,7 @@ function Home() {
       <VStack
         alignItems="center"
         spacing={[10, 12, 16]}
-        maxW="2xl"
+        maxW="3xl"
         mx="auto"
         px={2}
       >
