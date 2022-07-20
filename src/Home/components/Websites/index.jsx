@@ -34,7 +34,11 @@ function Websites({ handleWebsiteClick }) {
   const allWebsites = Object.keys(websitesData);
   return (
     <VStack spacing={5}>
-      <Text size="md" color="purple.900">
+      <Text
+        size="md"
+        color="purple.900"
+        _selection={{ background: "purple.100" }}
+      >
         Select to get results from specific websites only
       </Text>
       <ButtonGroup size="md" colorScheme="purple" variant="outline">
@@ -47,7 +51,12 @@ function Websites({ handleWebsiteClick }) {
                 websitesData={websitesData}
               />
             ) : (
-              <Text color="purple.900">Add a website</Text>
+              <Text
+                color="purple.900"
+                _selection={{ background: "purple.100" }}
+              >
+                Add a website
+              </Text>
             )}
             <AddWebsite />
             <DeleteWebsite />

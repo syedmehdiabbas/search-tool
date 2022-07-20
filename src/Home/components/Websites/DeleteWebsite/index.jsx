@@ -61,7 +61,12 @@ const DeleteWebsite = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent mt="300px" borderLeft="8px" borderColor="purple.400">
-          <ModalHeader color="purple.900">Delete a Website</ModalHeader>
+          <ModalHeader
+            color="purple.900"
+            _selection={{ background: "purple.100" }}
+          >
+            Delete a Website
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             {allWebsites.length !== 0 ? (
@@ -70,7 +75,11 @@ const DeleteWebsite = () => {
                 deleteWebsite={deleteWebsite}
               />
             ) : (
-              <Text textAlign="center" color="purple.900">
+              <Text
+                textAlign="center"
+                color="purple.900"
+                _selection={{ background: "purple.100" }}
+              >
                 Go add some websites first!
               </Text>
             )}
