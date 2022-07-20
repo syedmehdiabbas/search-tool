@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, HStack, Text } from "@chakra-ui/react";
+import { Box, Heading, HStack, Text, Image } from "@chakra-ui/react";
 import kungFu from "./../../../assets/kung-fu.png";
 
 function Header() {
@@ -7,7 +7,7 @@ function Header() {
     <Box textAlign="center">
       <HStack justify="center">
         <Heading
-          bgGradient="linear(to-r, pink.500, purple.600)"
+          bgGradient="linear(to-r, pink.600, purple.600)"
           textColor="transparent"
           bgClip="text"
           textShadow="base"
@@ -15,9 +15,7 @@ function Header() {
         >
           Search Fu
         </Heading>
-        <Heading>
-          <img src={kungFu} width="40" heoght="40" />
-        </Heading>
+        <Image src={kungFu} w={12} />
       </HStack>
       <Text
         fontSize="large"
