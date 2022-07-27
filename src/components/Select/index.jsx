@@ -45,6 +45,7 @@ function SelectFileType({ value, handleSelect, data, placeholder }) {
       onChange={handleSelect}
       styles={customStyles}
       theme={customTheme}
+      isClearable
     />
   );
 }
