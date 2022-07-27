@@ -105,7 +105,7 @@ function Home({ searchEngine }) {
     resetSearch();
   };
 
-  const isRedditSelected = websitesData?.Reddit?.selected;
+  const isRedditSelected = websitesData?.Reddit?.selected || websitesData?.reddit?.selected;
   const isSearchDisabled = input === "";
 
   return (
