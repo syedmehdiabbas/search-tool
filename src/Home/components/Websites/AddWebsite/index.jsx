@@ -39,6 +39,16 @@ function AddWebsite() {
     resetData();
   };
 
+  const isAddDisabled = (name, link) => {
+    if(!name || !link)
+      return true;
+    if(link.lastIndexOf(".")===-1)
+      return true;
+    if(link.lastIndexOf(".")===link.length-1)
+      return true;
+    return false;
+  }
+
   const PlusIcon = () => <Icon src={plus} alt="Add" />;
 
   return (
@@ -103,7 +113,7 @@ function AddWebsite() {
               onClick={add}
               variant="solid"
               mr={4}
-              isDisabled={!name || !link}
+              isDisabled={isAddDisabled(name,link)}
               rounded="full"
             >
               Add
