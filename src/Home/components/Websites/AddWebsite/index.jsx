@@ -34,7 +34,7 @@ function AddWebsite() {
 
   const add = () => {
     if (!name || !link) return;
-    addWebsite(name.toLowerCase(), link);
+    addWebsite(name, link);
     onClose();
     resetData();
   };

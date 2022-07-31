@@ -11,7 +11,7 @@ const useStore = create(
       addWebsite: (name, link) =>
         set(
           produce((state) => {
-            state.websites[name] = {
+            state.websites[name.toLowerCase()] = {
               name: name,
               address: link,
               selected: false,
