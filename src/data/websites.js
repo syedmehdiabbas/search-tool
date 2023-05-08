@@ -9,7 +9,12 @@ const data = {
     name: "MDN",
     address: "https://developer.mozilla.org",
     selected: false,
-  }
+  },
+  hn: {
+    name: "HN",
+    address: "https://news.ycombinator.com",
+    selected: false,
+  },
 };
 
 export default data;
