@@ -25,13 +25,6 @@ const useStore = create(
             delete state.websites[name];
           })
         ),
-
-      changeSelection: (name) =>
-        set(
-          produce((state) => {
-            state.websites[name].selected = !state.websites[name].selected;
-          })
-        ),
     }),
     {
       name: "websites",
