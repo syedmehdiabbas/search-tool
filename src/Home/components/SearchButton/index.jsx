@@ -9,6 +9,8 @@ function SearchButton({ isDisabled }) {
       px={16}
       type="submit"
       rounded="full"
+      isDisabled={isDisabled}
+      _disabled={{ background: "purple.500" }}
     >
       Search
     </Button>

@@ -4,9 +4,7 @@ import useStore from "../store";
 
 import { Box, HStack, VStack } from "@chakra-ui/react";
 import Header from "./components/Header";
-import ExactCheck from "./components/ExactCheck";
 import SubredditInput from "./components/SubredditInput";
-import ExcludeInput from "./components/ExcludeInput";
 import Websites from "./components/Websites";
 import SearchButton from "./components/SearchButton";
 import SearchInput from "./components/SearchInput";
@@ -16,27 +14,23 @@ import years from "./../data/years";
 
 function Home({ searchEngine }) {
   const websitesData = useStore((state) => state.websites);
-  const changeSelection = useStore((state) => state.changeSelection);
 
   const [input, setInput] = useState("");
-  const [exactSearch, setExactSearch] = useState(false);
-  const [excludeTerms, setExcludeTerms] = useState("");
   const [subName, setSubName] = useState("");
   const [selectedFileType, setSelectedFileType] = useState(null);
   const [selectedYear, setSelectedYear] = useState(0);
+  const [selectedWebsite, setSelectedWebsite] = useState("");
 
-  const allWebsites = Object.keys(websitesData);
+  function handleWebsiteClick(e) {
+    if (e.target.name === selectedWebsite) {
+      setSelectedWebsite("");
+      return;
+    }
+    setSelectedWebsite(e.target.name);
+  }
 
   const handleInput = (e) => {
     setInput(e.target.value);
-  };
-
-  const handleCheckboxChange = () => {
-    setExactSearch(!exactSearch);
-  };
-
-  const handleWebsiteClick = (e) => {
-    changeSelection(e.target.name);
   };
 
   const handleFileSelect = (option) => {
@@ -48,30 +42,19 @@ function Home({ searchEngine }) {
 
   const getInitialQuery = () => {
     const searchParam = searchEngine === "google" ? "search?" : "?";
-    if (exactSearch)
-      return `https://${searchEngine}.com/${searchParam}q="${input}"`;
     return `https://${searchEngine}.com/${searchParam}q=${input}`;
   };
 
-  const getAddedSites = () => {
+  const getAddedSite = () => {
     let res = "";
-    let num = 0;
-    allWebsites.forEach((w) => {
-      if (websitesData[w].selected) {
-        let siteAddress = websitesData[w].address;
-        const isReddit = websitesData[w]?.name?.toLowerCase() === "reddit";
-        if (isReddit && subName)
-          siteAddress = `${websitesData[w].address}/r/${subName}`;
-        res = res + `${num !== 0 ? " OR " : ""}site:${siteAddress}`;
-        num += 1;
-      }
-    });
+    if (selectedWebsite) {
+      let siteAddress = websitesData[selectedWebsite].address;
+      const isReddit = selectedWebsite?.toLowerCase() === "reddit";
+      if (isReddit && subName)
+        siteAddress = `${websitesData[selectedWebsite].address}/r/${subName}`;
+      res = `site:${siteAddress}`;
+    }
     return res;
-  };
-
-  const getExcludedSites = () => {
-    if (excludeTerms) return ` -${excludeTerms}`;
-    return "";
   };
 
   const getFileType = () => {
@@ -83,30 +66,20 @@ function Home({ searchEngine }) {
     return "";
   };
 
-  const unselectAll = () => {
-    allWebsites.forEach((w) => {
-      if (websitesData[w].selected === true) changeSelection(w);
-    });
-  };
-
   const resetSearch = () => {
-    setInput("");
-    setExactSearch(false);
-    setExcludeTerms("");
-    setSubName("");
     setSelectedFileType(null);
-    unselectAll();
+    setSelectedYear(0);
+    setSelectedWebsite("");
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const query = `${getInitialQuery()} ${getAddedSites()}${getExcludedSites()} ${getFileType()}${getYear()}`;
+    const query = `${getInitialQuery()} ${getAddedSite()} ${getFileType()}${getYear()}`;
     window.open(query);
-    //resetSearch();
+    resetSearch();
   };
 
-  const isRedditSelected = websitesData?.Reddit?.selected || websitesData?.reddit?.selected;
-  const isSearchDisabled = input === "";
+  const isRedditSelected = selectedWebsite === "reddit";
 
   return (
     <form onSubmit={handleSearch}>
@@ -121,13 +94,6 @@ function Home({ searchEngine }) {
 
         <VStack spacing={6}>
           <SearchInput input={input} handleInput={handleInput} />
-          <HStack justify="space-between" gap={3}>
-            <ExactCheck handleChange={handleCheckboxChange} val={exactSearch} />
-            <ExcludeInput
-              excludeTerms={excludeTerms}
-              setExcludeTerms={setExcludeTerms}
-            />
-          </HStack>
           <HStack justify="space-between" gap={3}>
             <Select
               value={selectedFileType}
@@ -146,7 +112,10 @@ function Home({ searchEngine }) {
         </VStack>
 
         <VStack spacing={6} align="center">
-          <Websites handleWebsiteClick={handleWebsiteClick} />
+          <Websites
+            selectedWebsite={selectedWebsite}
+            handleWebsiteClick={handleWebsiteClick}
+          />
           <Box minH="34px">
             {isRedditSelected ? (
               <SubredditInput
@@ -158,7 +127,7 @@ function Home({ searchEngine }) {
           </Box>
         </VStack>
 
-        <SearchButton isDisabled={isSearchDisabled} />
+        <SearchButton isDisabled={input === ""} />
       </VStack>
     </form>
   );
