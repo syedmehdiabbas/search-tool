@@ -102,7 +102,7 @@ function Home({ searchEngine }) {
     e.preventDefault();
     const query = `${getInitialQuery()} ${getAddedSites()}${getExcludedSites()} ${getFileType()}${getYear()}`;
     window.open(query);
-    resetSearch();
+    //resetSearch();
   };
 
   const isRedditSelected = websitesData?.Reddit?.selected || websitesData?.reddit?.selected;
