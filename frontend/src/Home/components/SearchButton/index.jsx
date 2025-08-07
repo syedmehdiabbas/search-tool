@@ -10,6 +10,8 @@ function SearchButton() {
       type="submit"
       rounded="full"
       tabIndex={5}
+      maxWidth="md"
+      width="full"
     >
       Search
     </Button>

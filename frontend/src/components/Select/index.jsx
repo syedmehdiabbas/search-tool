@@ -12,7 +12,8 @@ const customStyles = {
     color: "#718096",
     fontSize: "1rem",
     paddingLeft: "8px",
-    flexFrow: "1"
+    flexFrow: "1",
+    height: "40px"
   }),
   menu: (provided, state) => ({
     ...provided,

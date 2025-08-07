@@ -58,17 +58,25 @@ function Home({ searchEngine }) {
     <form onSubmit={handleSearch}>
       <VStack
         alignItems="center"
-        spacing={[8, 10, 12]}
+        spacing={8}
         maxW="3xl"
         mx="auto"
         px={2}
       >
         <Header />
-        <VStack spacing={4}>
+        <VStack 
+          spacing={8} 
+          width="full"
+          maxWidth="md"
+        >
           <SearchInput 
             input={input} 
             handleInput={(e) => setInput(e.target.value)}
           />
+          <VStack 
+            spacing={4} 
+            width="full"
+          >
           <Input
             type="search"
             placeholder="specific site: example.com"
@@ -97,6 +105,7 @@ function Home({ searchEngine }) {
             placeholder="time"
           />
         </VStack>
+        </VStack>
         <SearchButton isDisabled={input === ""} />
         <Button
           onClick={resetSearch}
@@ -104,6 +113,7 @@ function Home({ searchEngine }) {
           paddingInline={6}
           rounded="full"
           tabIndex={6}
+          color="gray.500"
         >
           Reset
         </Button>

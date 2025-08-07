@@ -18,7 +18,6 @@ function SearchInput({ input, handleInput }) {
       _hover={{ borderColor: "gray.500" }}
       _placeholder={{ color: "gray.500" }}
       tabIndex={2}
-      marginBottom={2}
     />
   );
 }
