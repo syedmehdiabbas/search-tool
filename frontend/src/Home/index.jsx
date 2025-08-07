@@ -10,7 +10,7 @@ import SearchButton from "./components/SearchButton";
 import SearchInput from "./components/SearchInput";
 import Select from "./../components/Select";
 import fileTypes from "./../data/fileTypes";
-import years from "./../data/years";
+import {dateInputOptions} from "./components/dateInputOptions";
 
 function Home({ searchEngine }) {
   const websitesData = useStore((state) => state.websites);
@@ -62,7 +62,7 @@ function Home({ searchEngine }) {
     return "";
   };
   const getYear = () => {
-    if (selectedYear) return `after:${selectedYear.value}`;
+    if (selectedYear) return selectedYear.value;
     return "";
   };
 
@@ -78,6 +78,8 @@ function Home({ searchEngine }) {
     window.open(query);
     resetSearch();
   };
+
+  const fileTypesOptions = fileTypes.map(f => ({ value: f, label: f}));
 
   const isRedditSelected = selectedWebsite === "reddit";
 
@@ -98,15 +100,15 @@ function Home({ searchEngine }) {
             <Select
               value={selectedFileType}
               handleSelect={handleFileSelect}
-              data={fileTypes}
+              options={fileTypesOptions}
               placeholder="File Type"
             />
 
             <Select
               value={selectedYear}
               handleSelect={handleYearSelect}
-              data={years}
-              placeholder="After:"
+              options={dateInputOptions}
+              placeholder="Time"
             />
           </HStack>
         </VStack>

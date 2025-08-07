@@ -4,7 +4,7 @@ import ReactSelect from "react-select";
 const customStyles = {
   control: (provided, state) => ({
     display: "flex",
-    width: 160,
+    width: 200,
     border: "1px solid #718096",
     background: "transparent",
     borderRadius: "999px",
@@ -34,9 +34,7 @@ const customTheme = (theme) => ({
   },
 });
 
-function SelectFileType({ value, handleSelect, data, placeholder }) {
-  const options = data.map((f) => ({ value: f, label: f }));
-
+function Select({ value, handleSelect, options, placeholder }) {
   return (
     <ReactSelect
       options={options}
@@ -50,4 +48,4 @@ function SelectFileType({ value, handleSelect, data, placeholder }) {
   );
 }
 
-export default SelectFileType;
+export default Select;
