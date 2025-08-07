@@ -4,8 +4,9 @@ const lastXDays = (x, label) => {
     const DAY = 24 * 60 * 60 * 1000;
     const date = new Date(currentDate - x * DAY); 
     const dateString = date.toISOString().slice(0, 10);
+    const value =  `after:${dateString}`;
     return ({
-        value: dateString,
+        value: value,
         label: label
     })
 }
