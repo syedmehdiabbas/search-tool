@@ -103,6 +103,7 @@ function Home({ searchEngine }) {
           variant="outline"
           paddingInline={6}
           rounded="full"
+          tabIndex={6}
         >
           Reset
         </Button>
