@@ -50,6 +50,7 @@ function Select({ value, handleSelect, options, placeholder }) {
         theme={customTheme}
         isClearable
         tabIndex={4}
+        isSearchable={false}
         />
     </Box>
   );
