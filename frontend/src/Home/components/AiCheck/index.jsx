@@ -1,7 +1,7 @@
 import React from "react";
 import { Checkbox, Tooltip } from "@chakra-ui/react";
 
-function ExactCheck({ handleChange, val }) {
+function AiCheck({ handleChange, val }) {
   return (
     <Checkbox
       onChange={handleChange}
@@ -12,14 +12,15 @@ function ExactCheck({ handleChange, val }) {
     >
       <Tooltip
         hasArrow
-        label="For exact match of your search string"
+        label="To hide AI overview on the results page"
         placement="left"
         offset={[0, 40]}
+        color="gray.600"
       >
-        Exact
+        Hide AI overview
       </Tooltip>
     </Checkbox>
   );
 }
 
-export default ExactCheck;
+export default AiCheck;

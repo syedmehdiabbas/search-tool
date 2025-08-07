@@ -9,21 +9,26 @@ import Select from "./../components/Select";
 import { Input } from "@chakra-ui/react";
 import fileTypes from "./../data/fileTypes";
 import {dateInputOptions} from "./components/dateInputOptions";
+import AiCheck from "./components/AiCheck";
 
 function Home({ searchEngine }) {
   const [input, setInput] = useState("");
   const [selectedWebsite, setSelectedWebsite] = useState("");
   const [selectedFileType, setSelectedFileType] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [hideAiResults, setHideAiResults] = useState(false);
 
   const getInitialQuery = () => {
     const searchParam = searchEngine === "google" ? "search?" : "?";
-    return `https://${searchEngine}.com/${searchParam}q=${input}`;
+    let query = `https://${searchEngine}.com/${searchParam}q=${input}`;
+    if(hideAiResults) {
+      query += "&udm=14";
+    }
+    return query;
   };
 
   const getAddedSite = () => {
-    if(selectedWebsite)
-      return ` site:${selectedWebsite}`;
+    if(selectedWebsite) return ` site:${selectedWebsite}`;
     return "";
   };
 
@@ -93,16 +98,20 @@ function Home({ searchEngine }) {
             tabIndex={3}
           />
           <Select
+            value={selectedTime}
+            handleSelect={(x) => setSelectedTime(x)}
+            options={dateInputOptions}
+            placeholder="time"
+          />
+          <Select
             value={selectedFileType}
             handleSelect={(x) => setSelectedFileType(x)}
             options={fileTypesOptions}
             placeholder="file type"
             />
-          <Select
-            value={selectedTime}
-            handleSelect={(x) => setSelectedTime(x)}
-            options={dateInputOptions}
-            placeholder="time"
+          <AiCheck
+            val={hideAiResults}
+            handleChange={(e) => setHideAiResults(e.target.value)}
           />
         </VStack>
         </VStack>
