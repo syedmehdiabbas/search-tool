@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-import { VStack } from "@chakra-ui/react";
+import { Button, VStack } from "@chakra-ui/react";
 import Header from "./components/Header";
 import SearchButton from "./components/SearchButton";
 import SearchInput from "./components/SearchInput";
@@ -58,13 +58,13 @@ function Home({ searchEngine }) {
     <form onSubmit={handleSearch}>
       <VStack
         alignItems="center"
-        spacing={[10, 12, 16]}
+        spacing={[8, 10, 12]}
         maxW="3xl"
         mx="auto"
         px={2}
       >
         <Header />
-        <VStack spacing={6}>
+        <VStack spacing={4}>
           <SearchInput 
             input={input} 
             handleInput={(e) => setInput(e.target.value)}
@@ -98,6 +98,14 @@ function Home({ searchEngine }) {
           />
         </VStack>
         <SearchButton isDisabled={input === ""} />
+        <Button
+          onClick={resetSearch}
+          variant="outline"
+          paddingInline={6}
+          rounded="full"
+        >
+          Reset
+        </Button>
       </VStack>
     </form>
   );
