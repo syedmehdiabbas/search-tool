@@ -3,7 +3,7 @@ import { InputGroup, InputLeftAddon, Input } from "@chakra-ui/react";
 
 function SubredditInput({ value, setName, autoFocus }) {
   return (
-    <InputGroup size="sm" borderColor="gray.500">
+    <InputGroup size="sm" borderColor="gray.400">
       <InputLeftAddon color="gray.600" children="r/" roundedLeft="full" />
       <Input
         placeholder="subreddit"

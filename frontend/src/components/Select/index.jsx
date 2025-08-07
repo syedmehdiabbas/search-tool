@@ -5,7 +5,7 @@ const customStyles = {
   control: (provided, state) => ({
     display: "flex",
     width: 200,
-    border: "1px solid #718096",
+    border: "1px solid #A0AEC0",
     background: "transparent",
     borderRadius: "999px",
     color: "#718096",
@@ -44,6 +44,7 @@ function Select({ value, handleSelect, options, placeholder }) {
       styles={customStyles}
       theme={customTheme}
       isClearable
+      tabIndex={4}
     />
   );
 }

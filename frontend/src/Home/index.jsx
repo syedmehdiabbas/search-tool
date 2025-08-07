@@ -2,43 +2,20 @@ import React from "react";
 import { useState } from "react";
 import useStore from "../store";
 
-import { Box, HStack, VStack } from "@chakra-ui/react";
+import { HStack, VStack } from "@chakra-ui/react";
 import Header from "./components/Header";
-import SubredditInput from "./components/SubredditInput";
-import Websites from "./components/Websites";
 import SearchButton from "./components/SearchButton";
 import SearchInput from "./components/SearchInput";
 import Select from "./../components/Select";
+import { Input } from "@chakra-ui/react";
 import fileTypes from "./../data/fileTypes";
 import {dateInputOptions} from "./components/dateInputOptions";
 
 function Home({ searchEngine }) {
-  const websitesData = useStore((state) => state.websites);
-
   const [input, setInput] = useState("");
-  const [subName, setSubName] = useState("");
-  const [selectedFileType, setSelectedFileType] = useState(null);
-  const [selectedYear, setSelectedYear] = useState(0);
   const [selectedWebsite, setSelectedWebsite] = useState("");
-
-  function handleWebsiteClick(e) {
-    if (e.target.name === selectedWebsite) {
-      setSelectedWebsite("");
-      return;
-    }
-    setSelectedWebsite(e.target.name);
-  }
-
-  const handleInput = (e) => {
-    setInput(e.target.value);
-  };
-
-  const handleFileSelect = (option) => {
-    setSelectedFileType(option);
-  };
-  const handleYearSelect = (option) => {
-    setSelectedYear(option);
-  };
+  const [selectedFileType, setSelectedFileType] = useState(null);
+  const [selectedTime, setSelectedTime] = useState(null);
 
   const getInitialQuery = () => {
     const searchParam = searchEngine === "google" ? "search?" : "?";
@@ -46,42 +23,37 @@ function Home({ searchEngine }) {
   };
 
   const getAddedSite = () => {
-    let res = "";
-    if (selectedWebsite) {
-      let siteAddress = websitesData[selectedWebsite].address;
-      const isReddit = selectedWebsite?.toLowerCase() === "reddit";
-      if (isReddit && subName)
-        siteAddress = `${websitesData[selectedWebsite].address}/r/${subName}`;
-      res = `site:${siteAddress}`;
-    }
-    return res;
+    if(selectedWebsite)
+      return ` site:${selectedWebsite}`;
+    return "";
   };
 
   const getFileType = () => {
-    if (selectedFileType) return `filetype:${selectedFileType.value} `;
+    if (selectedFileType) return ` filetype:${selectedFileType.value} `;
     return "";
   };
+
   const getYear = () => {
-    if (selectedYear) return selectedYear.value;
+    if (selectedTime) return selectedTime.value;
     return "";
   };
 
   const resetSearch = () => {
-    setSelectedFileType(null);
-    setSelectedYear(0);
+    setInput("");
     setSelectedWebsite("");
+    setSelectedFileType(null);
+    setSelectedTime(0);
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const query = `${getInitialQuery()} ${getAddedSite()} ${getFileType()}${getYear()}`;
-    window.open(query);
-    resetSearch();
+    const query = `${getInitialQuery()}${getAddedSite()}${getFileType()}${getYear()}`;
+    if(input) {
+      window.open(query);
+    }
   };
 
   const fileTypesOptions = fileTypes.map(f => ({ value: f, label: f}));
-
-  const isRedditSelected = selectedWebsite === "reddit";
 
   return (
     <form onSubmit={handleSearch}>
@@ -93,42 +65,42 @@ function Home({ searchEngine }) {
         px={2}
       >
         <Header />
-
         <VStack spacing={6}>
-          <SearchInput input={input} handleInput={handleInput} />
+          <SearchInput 
+            input={input} 
+            handleInput={(e) => setInput(e.target.value)}
+          />
+          <Input
+            type="search"
+            placeholder="specific site: example.com"
+            size="md"
+            variant="outline"
+            border="1px"
+            borderColor="gray.400"
+            focusBorderColor="purple.300"
+            value={selectedWebsite}
+            rounded="full"
+            _hover={{ borderColor: "gray.500" }}
+            _placeholder={{ color: "gray.500" }}
+            onChange={(e) => setSelectedWebsite(e.target.value)}
+            tabIndex={3}
+          />
           <HStack justify="space-between" gap={3}>
             <Select
               value={selectedFileType}
-              handleSelect={handleFileSelect}
+              handleSelect={(x) => setSelectedFileType(x)}
               options={fileTypesOptions}
-              placeholder="File Type"
+              placeholder="file type"
             />
 
             <Select
-              value={selectedYear}
-              handleSelect={handleYearSelect}
+              value={selectedTime}
+              handleSelect={(x) => setSelectedTime(x)}
               options={dateInputOptions}
-              placeholder="Time"
+              placeholder="time"
             />
           </HStack>
         </VStack>
-
-        <VStack spacing={6} align="center">
-          <Websites
-            selectedWebsite={selectedWebsite}
-            handleWebsiteClick={handleWebsiteClick}
-          />
-          <Box minH="34px">
-            {isRedditSelected ? (
-              <SubredditInput
-                value={subName}
-                setName={setSubName}
-                autoFocus={isRedditSelected}
-              />
-            ) : null}
-          </Box>
-        </VStack>
-
         <SearchButton isDisabled={input === ""} />
       </VStack>
     </form>

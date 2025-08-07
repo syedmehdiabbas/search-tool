@@ -74,7 +74,7 @@ function AddWebsite() {
               <Input
                 autoFocus
                 border="1px"
-                borderColor="gray.500"
+                borderColor="gray.400"
                 placeholder="Name"
                 value={name}
                 focusBorderColor="purple.300"
@@ -85,7 +85,7 @@ function AddWebsite() {
                 _hover={{ borderColor: "gray.500" }}
                 _placeholder={{ color: "gray.500" }}
               />
-              <InputGroup borderColor="gray.500">
+              <InputGroup borderColor="gray.400">
                 <InputLeftAddon
                   border="1px"
                   children="https://"

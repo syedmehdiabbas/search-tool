@@ -5,11 +5,11 @@ function SearchInput({ input, handleInput }) {
   return (
     <Input
       type="search"
-      placeholder="Search"
+      placeholder="search"
       size="lg"
       variant="outline"
       border="1px"
-      borderColor="gray.500"
+      borderColor="gray.400"
       focusBorderColor="purple.300"
       value={input}
       onChange={handleInput}
@@ -17,6 +17,7 @@ function SearchInput({ input, handleInput }) {
       autoFocus
       _hover={{ borderColor: "gray.500" }}
       _placeholder={{ color: "gray.500" }}
+      tabIndex={2}
     />
   );
 }

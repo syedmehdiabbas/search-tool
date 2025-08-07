@@ -13,7 +13,7 @@ function ExcludeInput({ excludeTerms, setExcludeTerms }) {
         placeholder="Words to exclude"
         variant="outline"
         border="1px"
-        borderColor="gray.500"
+        borderColor="gray.400"
         focusBorderColor="purple.300"
         rounded="full"
         value={excludeTerms}

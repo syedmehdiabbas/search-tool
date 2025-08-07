@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
-function SearchButton({ isDisabled }) {
+function SearchButton() {
   return (
     <Button
       variant="solid"
@@ -9,8 +9,7 @@ function SearchButton({ isDisabled }) {
       px={16}
       type="submit"
       rounded="full"
-      isDisabled={isDisabled}
-      _disabled={{ background: "purple.500" }}
+      tabIndex={5}
     >
       Search
     </Button>
