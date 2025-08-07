@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import useStore from "../store";
 
-import { HStack, VStack } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 import Header from "./components/Header";
 import SearchButton from "./components/SearchButton";
 import SearchInput from "./components/SearchInput";
@@ -85,21 +84,18 @@ function Home({ searchEngine }) {
             onChange={(e) => setSelectedWebsite(e.target.value)}
             tabIndex={3}
           />
-          <HStack justify="space-between" gap={3}>
-            <Select
-              value={selectedFileType}
-              handleSelect={(x) => setSelectedFileType(x)}
-              options={fileTypesOptions}
-              placeholder="file type"
+          <Select
+            value={selectedFileType}
+            handleSelect={(x) => setSelectedFileType(x)}
+            options={fileTypesOptions}
+            placeholder="file type"
             />
-
-            <Select
-              value={selectedTime}
-              handleSelect={(x) => setSelectedTime(x)}
-              options={dateInputOptions}
-              placeholder="time"
-            />
-          </HStack>
+          <Select
+            value={selectedTime}
+            handleSelect={(x) => setSelectedTime(x)}
+            options={dateInputOptions}
+            placeholder="time"
+          />
         </VStack>
         <SearchButton isDisabled={input === ""} />
       </VStack>
