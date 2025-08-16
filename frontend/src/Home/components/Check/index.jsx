@@ -1,26 +1,27 @@
 import React from "react";
-import { Checkbox, Tooltip } from "@chakra-ui/react";
+import { Checkbox, Tooltip, Text } from "@chakra-ui/react";
 
-function AiCheck({ handleChange, val }) {
+function Check({ handleChange, val, text, label }) {
   return (
     <Checkbox
       onChange={handleChange}
       colorScheme="purple"
-      value={val}
       color="gray.600"
       borderColor="gray.300"
+      isChecked={val}
     >
       <Tooltip
         hasArrow
-        label="To hide AI overview on the results page"
+        label={label}
         placement="left"
         offset={[0, 40]}
-        color="gray.600"
       >
-        Hide AI overview
+        <Text color="gray.600">
+          {text}
+        </Text>
       </Tooltip>
     </Checkbox>
   );
 }
 
-export default AiCheck;
+export default Check;

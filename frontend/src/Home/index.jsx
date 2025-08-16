@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-import { Button, VStack } from "@chakra-ui/react";
+import { Button, HStack, VStack } from "@chakra-ui/react";
 import Header from "./components/Header";
 import SearchButton from "./components/SearchButton";
 import SearchInput from "./components/SearchInput";
@@ -9,7 +9,7 @@ import Select from "./../components/Select";
 import { Input } from "@chakra-ui/react";
 import fileTypes from "./../data/fileTypes";
 import {dateInputOptions} from "./components/dateInputOptions";
-import AiCheck from "./components/AiCheck";
+import Check from "./components/Check";
 
 function Home({ searchEngine }) {
   const [input, setInput] = useState("");
@@ -17,12 +17,16 @@ function Home({ searchEngine }) {
   const [selectedFileType, setSelectedFileType] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [hideAiResults, setHideAiResults] = useState(false);
+  const [exactSearch, setExactSearch] = useState(false);
 
   const getInitialQuery = () => {
     const searchParam = searchEngine === "google" ? "search?" : "?";
     let query = `https://${searchEngine}.com/${searchParam}q=${input}`;
     if(hideAiResults) {
       query += "&udm=14";
+    }
+    if(exactSearch) {
+      query = query.replace(input, `"${input}"`);
     }
     return query;
   };
@@ -47,6 +51,8 @@ function Home({ searchEngine }) {
     setSelectedWebsite("");
     setSelectedFileType(null);
     setSelectedTime(0);
+    setHideAiResults(false);
+    setExactSearch(false);
   };
 
   const handleSearch = (e) => {
@@ -109,10 +115,25 @@ function Home({ searchEngine }) {
             options={fileTypesOptions}
             placeholder="file type"
             />
-          <AiCheck
-            val={hideAiResults}
-            handleChange={(e) => setHideAiResults(e.target.value)}
-          />
+          <HStack
+            width="full"
+            justifyContent="center"
+            gap={8}
+            flexWrap={true}
+          >
+            <Check
+              val={hideAiResults}
+              handleChange={(e) =>  setHideAiResults(x => !x)}
+              text="Hide AI overview"
+              label="To hide automatic AI overview on the results page"
+            />
+            <Check
+              val={exactSearch}
+              handleChange={(e) => setExactSearch(x => !x)}
+              text="Exact search"
+              label="To search the term verbatim"
+            />
+          </HStack>
         </VStack>
         </VStack>
         <SearchButton isDisabled={input === ""} />
