@@ -23,13 +23,13 @@ const Navbar = ({ searchEngine, setSearchEngine }) => {
       px={[2, 4, 6]}
       h={[14, 14, 16]}
     >
-      <Icon src={google} />
+      {/* <Icon src={google} />
       <Switch
         onChange={handleSearchEngineChange}
         isChecked={searchEngine === "duckduckgo"}
         colorScheme="purple"
       />
-      <Icon src={duckduckgo} />
+      <Icon src={duckduckgo} /> */}
     </HStack>
   );
 };
