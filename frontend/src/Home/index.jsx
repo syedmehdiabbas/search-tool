@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Box, Button, HStack, Input, VStack } from "@chakra-ui/react";
+import { Box, Button, HStack, IconButton, Input, VStack } from "@chakra-ui/react";
 import ReactSelect from "react-select";
 import CreatableSelect from "react-select/creatable";
 import Check from "../components/Check";
 import Header from "../components/Header";
+import Icon from "../components/Icon";
 import { dateInputOptions } from "../data/dateInputOptions";
 import { customStyles, customTheme } from "../data/styles";
 import fileTypes from "./../data/fileTypes";
+import searchIcon from "./../assets/search.svg";
 
 function Home({ searchEngine }) {
   const [input, setInput] = useState("");
@@ -96,22 +98,48 @@ function Home({ searchEngine }) {
       <VStack alignItems="center" spacing={8} maxW="3xl" mx="auto" px={2}>
         <Header />
         <VStack spacing={4} width="full" maxWidth="md">
-          <Input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            type="search"
-            placeholder="search"
-            size="lg"
-            variant="outline"
+          <Box
             border="1px"
             borderColor="gray.400"
-            focusBorderColor="purple.300"
             rounded="full"
-            autoFocus
-            _hover={{ borderColor: "gray.500" }}
-            _placeholder={{ color: "gray.500" }}
-            tabIndex={2}
-          />
+            w="full"
+            height={10}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              type="search"
+              placeholder="search"
+              focusBorderColor="none"
+              outline="none"
+              border="none"
+              variant="outline"
+              rounded="full"
+              autoFocus
+              _hover={{ borderColor: "gray.500" }}
+              _placeholder={{ color: "gray.500" }}
+              tabIndex={2}
+            />
+            <Button
+              background="transparent"
+              rounded="full"
+              color="purple.50"
+              border="none"
+              outline="none"
+              focusBorderColor="none"
+              type="submit"
+              tabIndex={2.5}
+              _hover={{
+                background: "transparent",
+                transform: "scale(1.01)"
+              }}
+            >
+              <Icon src={searchIcon} />
+            </Button>
+          </Box>
           <Box width="full">
             <CreatableSelect
               value={selectedWebsite}
