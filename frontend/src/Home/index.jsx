@@ -8,8 +8,8 @@ import Check from "./components/Check";
 import Header from "./components/Header";
 import SearchButton from "./components/SearchButton";
 import SearchInput from "./components/SearchInput";
-import { dateInputOptions } from "./components/dateInputOptions";
-import { customStyles, customTheme } from "../components/Select/styles";
+import { dateInputOptions } from "../data/dateInputOptions";
+import { customStyles, customTheme } from "../data/styles";
 import fileTypes from "./../data/fileTypes";
 
 function Home({ searchEngine }) {
