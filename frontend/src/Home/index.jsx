@@ -80,7 +80,7 @@ function Home({ searchEngine }) {
 
   const addWebsiteOption = (website) => {
     const websiteOption = { value: website, label: website };
-    if(!isValidWebsiteName()) {
+    if(!isValidWebsiteName(website)) {
       return;
     }
     setSelectedWebsite(websiteOption);
@@ -89,10 +89,7 @@ function Home({ searchEngine }) {
   };
 
   const fileTypesOptions = fileTypes.map((f) => ({ value: f, label: f }));
-  const websiteOptions = fullWebsiteList.map((x) => ({
-    value: x,
-    label: x,
-  }));
+  const websiteOptions = fullWebsiteList.map((x) => ({ value: x, label: x }));
 
   return (
     <form onSubmit={handleSearch}>
