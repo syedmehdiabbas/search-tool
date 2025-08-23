@@ -1,16 +1,9 @@
 const fileTypes = [
-  "pdf",
   "epub",
-  "mobi",
-  "txt",
-  "doc",
-  "docx",
-  "xls",
-  "xlsx",
-  "ppt",
-  "pptx",
   "mp3",
-  "svg",
+  "mp4",
+  "pdf",
+  "txt",
 ];
 
 export default fileTypes;

@@ -9,7 +9,7 @@ function SearchButton() {
       px={16}
       type="submit"
       rounded="full"
-      tabIndex={5}
+      tabIndex={8}
       maxWidth="md"
       width="full"
     >

@@ -1,8 +1,4 @@
-import React from "react";
-import ReactSelect from "react-select";
-import {Box} from "@chakra-ui/react"
-
-const customStyles = {
+export const customStyles = {
   control: (provided, state) => ({
     display: "flex",
     width: "100%",
@@ -27,7 +23,7 @@ const customStyles = {
   },
 };
 
-const customTheme = (theme) => ({
+export const customTheme = (theme) => ({
   ...theme,
   borderRadius: 0,
   colors: {
@@ -36,25 +32,3 @@ const customTheme = (theme) => ({
     primary: "#B794F4", //purple.300 for select control outline
   },
 });
-
-function Select({ value, handleSelect, options, placeholder }) {
-  return (
-    <Box
-      width="full"
-    >
-      <ReactSelect
-        options={options}
-        placeholder={placeholder}
-        value={value}
-        onChange={handleSelect}
-        styles={customStyles}
-        theme={customTheme}
-        isClearable
-        tabIndex={4}
-        isSearchable={false}
-        />
-    </Box>
-  );
-}
-
-export default Select;
