@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Heading, HStack, Text, Image } from "@chakra-ui/react";
-import kungFu from "./../../../assets/kung-fu.png";
+import kungFu from "./../../assets/kung-fu.png";
 
 function Header() {
   return (

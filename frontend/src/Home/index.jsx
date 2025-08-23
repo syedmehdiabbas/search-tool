@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-
-import { Button, HStack, VStack, Box } from "@chakra-ui/react";
+import { Box, Button, HStack, Input, VStack } from "@chakra-ui/react";
 import ReactSelect from "react-select";
 import CreatableSelect from "react-select/creatable";
-import Check from "./components/Check";
-import Header from "./components/Header";
-import SearchButton from "./components/SearchButton";
-import SearchInput from "./components/SearchInput";
+import Check from "../components/Check";
+import Header from "../components/Header";
 import { dateInputOptions } from "../data/dateInputOptions";
 import { customStyles, customTheme } from "../data/styles";
 import fileTypes from "./../data/fileTypes";
@@ -102,9 +99,21 @@ function Home({ searchEngine }) {
       <VStack alignItems="center" spacing={8} maxW="3xl" mx="auto" px={2}>
         <Header />
         <VStack spacing={4} width="full" maxWidth="md">
-          <SearchInput
-            input={input}
-            handleInput={(e) => setInput(e.target.value)}
+          <Input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            type="search"
+            placeholder="search"
+            size="lg"
+            variant="outline"
+            border="1px"
+            borderColor="gray.400"
+            focusBorderColor="purple.300"
+            rounded="full"
+            autoFocus
+            _hover={{ borderColor: "gray.500" }}
+            _placeholder={{ color: "gray.500" }}
+            tabIndex={2}
           />
           <Box width="full">
             <CreatableSelect
@@ -162,7 +171,19 @@ function Home({ searchEngine }) {
             />
           </HStack>
         </VStack>
-        <SearchButton isDisabled={input === ""} />
+        <Button
+          variant="solid"
+          colorScheme="purple"
+          size="lg"
+          px={16}
+          type="submit"
+          rounded="full"
+          tabIndex={8}
+          maxWidth="md"
+          width="full"
+        >
+          Search
+        </Button>
         <Button
           onClick={resetSearch}
           variant="outline"
