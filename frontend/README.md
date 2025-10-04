@@ -1,6 +1,6 @@
 # Search Fu
 
-https://searchfu.vercel.app
+https://searchfu.netlify.app
 
 A tool that adds superpowers to your searches
 
